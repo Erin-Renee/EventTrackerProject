@@ -16,31 +16,39 @@ CREATE SCHEMA IF NOT EXISTS `Event` DEFAULT CHARACTER SET utf8 ;
 USE `Event` ;
 
 -- -----------------------------------------------------
--- Table `marathons`
+-- Table `book`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `marathons` ;
+DROP TABLE IF EXISTS `book` ;
 
-CREATE TABLE IF NOT EXISTS `marathons` (
+CREATE TABLE IF NOT EXISTS `book` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `description` VARCHAR(600) NULL,
-  `location` VARCHAR(45) NULL,
+  `title` VARCHAR(45) NULL,
+  `description` TEXT NULL,
+  `author` VARCHAR(45) NULL,
+  `published` DATETIME NULL,
   `rating` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC))
+  `date_read` DATETIME NULL,
+  PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 
+SET SQL_MODE = '';
+DROP USER IF EXISTS book;
+SET SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
+CREATE USER 'book' IDENTIFIED BY 'book';
+
+GRANT SELECT, INSERT, TRIGGER, UPDATE, DELETE ON TABLE * TO 'book';
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `marathons`
+-- Data for table `book`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `Event`;
-INSERT INTO `marathons` (`id`, `name`, `description`, `location`, `rating`) VALUES (1, 'Park Marathon', '26.6 Marathon', 'Denver', '7');
+INSERT INTO `book` (`id`, `title`, `description`, `author`, `published`, `rating`, `date_read`) VALUES (1, 'Catch-22', 'Fifty years after its original publication, Catch-22 remains a cornerstone of American literature and one of the funniest—and most celebrated—books of all time. In recent years it has been named to “best novels” lists by Time, Newsweek, the Modern Library, and the London Observer.\n\nSet in Italy during World War II, this is the story of the incomparable, malingering bombardier, Yossarian, a hero who is furious because thousands of people he has never met are trying to kill him. But his real problem is not the enemy—it is his own army, which keeps increasing the number of missions the men must fly to complete their service. Yet if Yossarian makes any attempt to excuse himself from the perilous missions he’s assigned, he’ll be in violation of Catch-22, a hilariously sinister bureaucratic rule: a man is considered insane if he willingly continues to fly dangerous combat missions, but if he makes a formal request to be removed from duty, he is proven sane and therefore ineligible to be relieved.', 'Joseph Heller', '2011-04-05', '7', '2020-10-02');
+INSERT INTO `book` (`id`, `title`, `description`, `author`, `published`, `rating`, `date_read`) VALUES (2, 'I Am Legennd', NULL, 'Richard Matheson', NULL, NULL, NULL);
 
 COMMIT;
 
