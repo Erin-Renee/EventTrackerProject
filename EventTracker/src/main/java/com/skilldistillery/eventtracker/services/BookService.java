@@ -10,4 +10,12 @@ import com.skilldistillery.eventtracker.entities.Book;
 public interface BookService {
 
 	List<Book> showAllBooks();
+
+	Book create(Book book);
+
+	Book update(Integer bId, Book updateBook);
+
+	boolean delete(Integer id);
+
+	Book selectBook(Integer id);
 }
