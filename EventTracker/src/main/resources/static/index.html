@@ -5,12 +5,42 @@
 <title>Book Worm</title>
 </head>
 <body>
-
-    <button id="showall" name="showall">All Books</button><br>
+	
+	<h3> Book Worm </h3>
+	<h4>A place to keep track of the books you have read</h4>
+	
+    <button id="showAll" name="showAll">All Books</button><br>
+    
     
   <form name="bookForm">
     <input type="number" name="bId">
     <button id="lookup" name="lookup">Get book by Id</button>
+  </form><br>
+  
+  <form name="deleteBookForm">
+    <input type="number" name="bId">
+    <button id="delete" name="delete">Delete Book</button>
+  </form><br>
+  
+  <form name="createBookForm">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="author" placeholder="Author">
+    <input type="date" name="published" placeholder="Published">
+    <input type="number" name="rating" placeholder="Rating">
+    <input type="text" name="description" placeholder="Description">
+    <input type="date" name="dateRead" placeholder="Date Read">
+    <button id="createBk" name="createBk">New Book</button>
+  </form><br>
+  
+  <form name="updateBookForm">
+ 	<input type="number" id= "bId" name="bId" placeholder="id">
+    <input type="text" name="title" placeholder="Title">
+    <input type="text" name="author" placeholder="Author">
+    <input type="date" name="published" placeholder="Published">
+    <input type="number" name="rating" placeholder="Rating">
+    <input type="text" name="description" placeholder="Description">
+    <input type="date" name="dateRead" placeholder="Date Read">
+    <button id="updateBk" name="updateBk">Update Book</button>
   </form><br>
   
   <div id="bookData"></div>
